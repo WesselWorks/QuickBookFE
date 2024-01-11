@@ -13,7 +13,7 @@ function handleRowClick(hotel) {
 
 
 export function fetchHotels() {
-    return fetch('http://localhost:8080/allhotels')
+    return fetch('http://localhost:8080/hotels')
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById('hotelsTable').getElementsByTagName('tbody')[0];
