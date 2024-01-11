@@ -7,7 +7,7 @@ body {
 /* NAVBAR */
 .navbar {
     text-align: center;
-    background-color: #0056b3;
+    background-color: #004a9f;
     padding: 50px 0;
     margin-bottom: 20px;
     color: white;
@@ -19,8 +19,6 @@ body {
     padding: 0;
 }
 
-
-
 /* CONTAINER WITH BUTTONS, FORMS, SEARCHBAR, AND TABLE */
 .container {
     text-align: center;
@@ -29,8 +27,9 @@ body {
 }
 
 .search-bar {
+    padding-top: 20px;
     width: 100%;
-    max-width: 608px;
+    max-width: 608px !important;
 }
 
 /* TABLE */
@@ -95,8 +94,9 @@ label {
 
 input[type="text"] {
     width: 100%;
+    max-width: 778px;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
