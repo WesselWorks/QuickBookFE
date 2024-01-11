@@ -4,6 +4,36 @@ body {
     padding: 0;
 }
 
+/* NAVBAR */
+.navbar {
+    text-align: center;
+    background-color: #0056b3; /* Example color */
+    padding: 50px 0; /* Vertical padding */
+    margin-bottom: 20px;
+    color: white;
+}
+
+.navbar h1 {
+    font-size: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+.button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* CONTAINER WITH BUTTONS, FORMS, AND TABLE */
 .container {
     text-align: center; /* Center-align the contents within the container */
     max-width: 800px; /* Adjust the max-width as needed */
@@ -68,6 +98,7 @@ input[type="text"] {
     font-size: 16px;
     cursor: pointer;
     margin-top: 10px; /* Added margin for spacing */
+    transition: background-color 0.3s ease;
 }
 
 .delete-button {
@@ -80,8 +111,15 @@ input[type="text"] {
     cursor: pointer;
     margin-top: 10px; /* Added margin for spacing */
     float: right;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #a80101; /* Slightly darker shade on hover */
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: #004a9f;
 }
+
+
