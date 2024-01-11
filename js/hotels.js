@@ -89,5 +89,10 @@ window.addEventListener('load', () => {
             .catch(error => console.error('Error:', error));
     });
 
+    const searchBar = document.getElementById('searchBar');
+    searchBar.addEventListener('input', () => {
+        fetchHotels(searchBar.value.trim());
+    });
+
     fetchHotels();
 });

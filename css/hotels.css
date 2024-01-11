@@ -37,7 +37,12 @@ body {
 .container {
     text-align: center; /* Center-align the contents within the container */
     max-width: 800px; /* Adjust the max-width as needed */
-    margin: 0 auto;
+    margin: auto;
+}
+
+.search-bar {
+    width: 100%; /* This makes the search bar take up 100% of the parent container width */
+    max-width: 608px; /* This matches the container's width */
 }
 
 /* TABLE */
@@ -48,10 +53,30 @@ table {
     margin-bottom: 50px; /* Added margin for spacing */
     cursor: pointer;
 }
+
+.id-column {
+    width: 10%;
+}
+
+.name-column {
+    width: 30%;
+}
+
+.address-column {
+    width: 40%;
+}
+
+.rooms-column {
+    width: 20%;
+}
+
 th, td {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 12px;
+    overflow: hidden; /* Prevents content from overflowing */
+    text-overflow: ellipsis; /* Adds an ellipsis to overflowing content */
+    white-space: nowrap; /* Keeps content in a single line */
 }
 th {
     background-color: #006ee3; /* Changed color for header */

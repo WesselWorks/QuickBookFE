@@ -11,16 +11,24 @@ function handleRowClick(hotel) {
     document.getElementById('editHotelForm').style.display = 'block';
 }
 
-
-export function fetchHotels() {
+export function fetchHotels(searchTerm = '') {
     return fetch('http://localhost:8080/hotels')
         .then(response => response.json())
         .then(data => {
+            let filteredData = data;
+            if (searchTerm) {
+                filteredData = data.filter(hotel =>
+                        hotel.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        hotel.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        hotel.country.toLowerCase().includes(searchTerm.toLowerCase())
+                    // include any other fields you want to search by
+                );
+            }
+
             const tableBody = document.getElementById('hotelsTable').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = ''; // Clear existing rows
 
-            tableBody.innerHTML = ''; // Clear existing rows in a more concise way
-
-            data.forEach(hotel => {
+            filteredData.forEach(hotel => {
                 let row = tableBody.insertRow();
                 row.insertCell(0).innerText = hotel.id;
                 row.insertCell(1).innerText = hotel.name;
@@ -30,3 +38,23 @@ export function fetchHotels() {
             });
         });
 }
+
+// export function fetchHotels() {
+//     return fetch('http://localhost:8080/hotels')
+//         .then(response => response.json())
+//         .then(data => {
+//             const tableBody = document.getElementById('hotelsTable').getElementsByTagName('tbody')[0];
+//
+//             tableBody.innerHTML = ''; // Clear existing rows in a more concise way
+//
+//             data.forEach(hotel => {
+//                 let row = tableBody.insertRow();
+//                 row.insertCell(0).innerText = hotel.id;
+//                 row.insertCell(1).innerText = hotel.name;
+//                 row.insertCell(2).innerText = `${hotel.street}, ${hotel.city}, ${hotel.country}`;
+//                 row.insertCell(3).innerText = hotel.rooms ? hotel.rooms.length : 'N/A';
+//                 row.addEventListener('click', () => handleRowClick(hotel));
+//             });
+//         });
+// }
+
