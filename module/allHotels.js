@@ -1,10 +1,8 @@
-// handleRowClick is called when a row in the hotel table is clicked.
 function handleRowClick(hotel)
 {
-    // Populate the edit form with the details of the clicked hotel.
     populateEditForm(hotel);
-    // Make the edit form visible.
     document.getElementById('editHotelForm').style.display = 'block';
+
     // Scroll the window to the top to ensure the form is visible.
     window.scrollTo(0, 0);
 }
@@ -28,15 +26,12 @@ export function fetchHotels(searchQuery = '')
         .then(response => response.json())
         .then(data => {
             let filteredData;
-            // If there is a search query, filter the data accordingly.
             if (searchQuery)
             {
                 filteredData = filterHotels(data, searchQuery);
             } else {
-                // If there's no search query, use the full dataset.
                 filteredData = data;
             }
-            // Render the hotel table using the filtered or full data.
             renderHotelTable(filteredData);
         });
 }
@@ -44,7 +39,6 @@ export function fetchHotels(searchQuery = '')
 // filterHotels filters the hotel data based on the provided search query.
 function filterHotels(hotels, query)
 {
-    // Convert the search query to lower case for case-insensitive comparison.
     const lowerCaseQuery = query.toLowerCase();
     // Return only those hotels that match the search query in name, city, or country.
     return hotels.filter(hotel =>
@@ -57,7 +51,6 @@ function filterHotels(hotels, query)
 // renderHotelTable updates the hotel table in the HTML with the provided list of hotels.
 function renderHotelTable(hotels)
 {
-    // Get the table body element where hotel rows will be added.
     const tableBody = document.getElementById('hotelsTable').getElementsByTagName('tbody')[0];
     // Clear any existing rows in the table body.
     tableBody.innerHTML = '';
@@ -68,7 +61,6 @@ function renderHotelTable(hotels)
     });
 }
 
-// appendHotelRow adds a new row to the hotel table for the given hotel.
 function appendHotelRow(tableBody, hotel)
 {
     // Insert a new row at the end of the table body.
@@ -84,6 +76,5 @@ function appendHotelRow(tableBody, hotel)
         // If 'rooms' is not available or the array is empty, display 'N/A'.
         row.insertCell(3).innerText = 'N/A';
     }
-    // Add an event listener to handle clicks on this row.
     row.addEventListener('click', () => handleRowClick(hotel));
 }

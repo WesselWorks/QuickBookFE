@@ -13,28 +13,25 @@ window.addEventListener('load', () =>
     const deleteHotelButton = document.getElementById('deleteHotelButton');
     const searchBar = document.getElementById('searchBar');
 
-    // Initially hide the form used to create new hotels.
+    // hide the form used to create new hotels.
     createHotelForm.style.display = 'none';
 
-    // Event listener for 'Create New Hotel' button
+
     createFormButton.addEventListener('click', function()
     {
         createHotelForm.style.display = 'block';
     });
 
-    // Event listener for 'Cancel' button on the create form
     cancelCreateButton.addEventListener('click', function()
     {
         createHotelForm.style.display = 'none';
     });
 
-    // Event listener for 'Cancel' button on the edit form
     cancelEditButton.addEventListener('click', function()
     {
         editHotelForm.style.display = 'none';
     });
 
-    // Event listener for 'Delete' button
     deleteHotelButton.addEventListener('click', function()
     {
         const hotelId = document.getElementById('editHotelId').value;
@@ -47,14 +44,14 @@ window.addEventListener('load', () =>
             .catch(error => console.error('Error:', error));
     });
 
-    // Event listener for create hotel form submission
+
     createHotelForm.addEventListener('submit', function(event)
     {
         event.preventDefault();
         submitHotelForm(createHotelForm, createHotel);
     });
 
-    // Event listener for edit hotel form submission
+
     editHotelForm.addEventListener('submit', function(event)
     {
         event.preventDefault();
@@ -62,7 +59,7 @@ window.addEventListener('load', () =>
         submitHotelForm(editHotelForm, (formData) => updateHotel(hotelId, formData));
     });
 
-    // Event listener for search bar input
+
     searchBar.addEventListener('input', function()
     {
         fetchHotels(searchBar.value.trim());
