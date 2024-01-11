@@ -1,98 +1,94 @@
-import {fetchHotels} from "../module/allHotels.js";
-import {createHotel} from "../module/createHotel.js";
-import {updateHotel} from "../module/updateHotel.js";
-import {deleteHotel} from "../module/deleteHotel.js";
+// Import necessary functions from other modules.
+import { fetchHotels } from "../module/allHotels.js";
+import { createHotel, updateHotel, deleteHotel } from "../module/hotelCRUD.js";
 
-window.addEventListener('load', () => {
-
+window.addEventListener('load', () =>
+{
+    // Retrieve references to DOM elements you will interact with.
     const createHotelForm = document.getElementById('createHotelForm');
     const editHotelForm = document.getElementById('editHotelForm');
     const createFormButton = document.getElementById('createFormButton');
     const cancelCreateButton = document.getElementById('cancelCreateButton');
     const cancelEditButton = document.getElementById('cancelEditButton');
     const deleteHotelButton = document.getElementById('deleteHotelButton');
+    const searchBar = document.getElementById('searchBar');
 
-    // Add event listener to the delete hotel button
-    deleteHotelButton.addEventListener('click', () => {
-        const hotelId = document.getElementById('editHotelId').value;
+    // Initially hide the form used to create new hotels.
+    createHotelForm.style.display = 'none';
 
-        deleteHotel(hotelId)
-            .then(() => {
-                editHotelForm.style.display = 'none';
-                fetchHotels(); // Refresh the hotel list
-            })
-            .catch(error => console.error('Error:', error));
-    });
-
-    // Add event listener to toggle the create hotel form
-    createFormButton.addEventListener('click', () =>
+    // Event listener for 'Create New Hotel' button
+    createFormButton.addEventListener('click', function()
     {
         createHotelForm.style.display = 'block';
     });
 
-    // Hides the form is the cancel button in pressed
-    cancelEditButton.addEventListener('click', () =>
-    {
-        editHotelForm.style.display = 'none';
-    });
-
-    createHotelForm.style.display = 'none'; // hide create new hotel form
-
-    fetchHotels()
-
-    // Handling the Create New Hotel Form
-    createHotelForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(createHotelForm);
-        const hotelData = {
-            name: formData.get('name'),
-            country: formData.get('country'),
-            city: formData.get('city'),
-            zip: formData.get('zip'),
-            street: formData.get('street')
-        };
-
-        createHotel(hotelData)
-            .then(() => {
-                createHotelForm.reset(); // Clear the form after successful submission
-                fetchHotels(); // Refresh the hotel list
-                createHotelForm.style.display = 'none';
-            })
-            .catch(error => console.error('Error:', error));
-    });
-
-    // Event listener for the cancel button in the create form
-    cancelCreateButton.addEventListener('click', () =>
+    // Event listener for 'Cancel' button on the create form
+    cancelCreateButton.addEventListener('click', function()
     {
         createHotelForm.style.display = 'none';
     });
 
-    // Event listener for submitting the edit hotel form
-    editHotelForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    // Event listener for 'Cancel' button on the edit form
+    cancelEditButton.addEventListener('click', function()
+    {
+        editHotelForm.style.display = 'none';
+    });
 
+    // Event listener for 'Delete' button
+    deleteHotelButton.addEventListener('click', function()
+    {
         const hotelId = document.getElementById('editHotelId').value;
-        const updatedHotelData = {
-            name: document.getElementById('editName').value,
-            country: document.getElementById('editCountry').value,
-            city: document.getElementById('editCity').value,
-            zip: document.getElementById('editZip').value,
-            street: document.getElementById('editStreet').value,
-        };
-
-        updateHotel(hotelId, updatedHotelData)
-            .then(() => {
+        deleteHotel(hotelId)
+            .then(() =>
+            {
                 editHotelForm.style.display = 'none';
-                fetchHotels(); // Refresh the hotel list
+                fetchHotels();
             })
             .catch(error => console.error('Error:', error));
     });
 
-    const searchBar = document.getElementById('searchBar');
-    searchBar.addEventListener('input', () => {
+    // Event listener for create hotel form submission
+    createHotelForm.addEventListener('submit', function(event)
+    {
+        event.preventDefault();
+        submitHotelForm(createHotelForm, createHotel);
+    });
+
+    // Event listener for edit hotel form submission
+    editHotelForm.addEventListener('submit', function(event)
+    {
+        event.preventDefault();
+        const hotelId = document.getElementById('editHotelId').value;
+        submitHotelForm(editHotelForm, (formData) => updateHotel(hotelId, formData));
+    });
+
+    // Event listener for search bar input
+    searchBar.addEventListener('input', function()
+    {
         fetchHotels(searchBar.value.trim());
     });
 
+    // Fetch and display the list of all hotels when the page first loads.
     fetchHotels();
 });
+
+function submitHotelForm(form, actionFunction)
+{
+    const formData = new FormData(form);
+    const hotelData = {
+        name: formData.get('name'),
+        country: formData.get('country'),
+        city: formData.get('city'),
+        zip: formData.get('zip'),
+        street: formData.get('street')
+    };
+
+    actionFunction(hotelData)
+        .then(() =>
+        {
+            form.reset();
+            fetchHotels();
+            form.style.display = 'none';
+        })
+        .catch(error => console.error('Error:', error));
+}

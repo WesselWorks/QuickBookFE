@@ -7,8 +7,8 @@ body {
 /* NAVBAR */
 .navbar {
     text-align: center;
-    background-color: #0056b3; /* Example color */
-    padding: 50px 0; /* Vertical padding */
+    background-color: #0056b3;
+    padding: 50px 0;
     margin-bottom: 20px;
     color: white;
 }
@@ -19,38 +19,26 @@ body {
     padding: 0;
 }
 
-.button {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
 
-.button:hover {
-    background-color: #0056b3;
-}
 
-/* CONTAINER WITH BUTTONS, FORMS, AND TABLE */
+/* CONTAINER WITH BUTTONS, FORMS, SEARCHBAR, AND TABLE */
 .container {
-    text-align: center; /* Center-align the contents within the container */
-    max-width: 800px; /* Adjust the max-width as needed */
+    text-align: center;
+    max-width: 800px;
     margin: auto;
 }
 
 .search-bar {
-    width: 100%; /* This makes the search bar take up 100% of the parent container width */
-    max-width: 608px; /* This matches the container's width */
+    width: 100%;
+    max-width: 608px;
 }
 
 /* TABLE */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px; /* Added margin for spacing */
-    margin-bottom: 50px; /* Added margin for spacing */
+    margin-top: 20px;
+    margin-bottom: 50px;
     cursor: pointer;
 }
 
@@ -74,21 +62,21 @@ th, td {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 12px;
-    overflow: hidden; /* Prevents content from overflowing */
-    text-overflow: ellipsis; /* Adds an ellipsis to overflowing content */
-    white-space: nowrap; /* Keeps content in a single line */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /
 }
 th {
-    background-color: #006ee3; /* Changed color for header */
-    color: white; /* White text for header */
+    background-color: #006ee3;
+    color: white;
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2; /* Zebra striping for rows */
+    background-color: #f2f2f2;
 }
 
 tr:hover {
-    background-color: #ddd; /* Hover effect for rows */
+    background-color: #ddd;
 }
 
 
@@ -122,7 +110,7 @@ input[type="text"] {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    margin-top: 10px; /* Added margin for spacing */
+    margin-top: 10px;
     transition: background-color 0.3s ease;
 }
 
@@ -134,17 +122,20 @@ input[type="text"] {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    margin-top: 10px; /* Added margin for spacing */
+    margin-top: 10px;
     float: right;
     transition: background-color 0.3s ease;
 }
 
 .delete-button:hover {
-    background-color: #a80101; /* Slightly darker shade on hover */
+    background-color: #a80101;
 }
 
 .button:hover {
     background-color: #004a9f;
 }
+
+
+
 
 
