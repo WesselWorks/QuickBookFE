@@ -1,32 +1,50 @@
 import {fetchHotels} from "../module/allHotels.js";
 import {createHotel} from "../module/createHotel.js";
 import {updateHotel} from "../module/updateHotel.js";
+import {deleteHotel} from "../module/deleteHotel.js";
 
 window.addEventListener('load', () => {
 
-    const hotelForm = document.getElementById('hotelForm');
-    const editHotelForm = document.getElementById('editHotelForm'); // Get the edit form
-    const toggleFormButton = document.getElementById('toggleFormButton');
+    const createHotelForm = document.getElementById('createHotelForm');
+    const editHotelForm = document.getElementById('editHotelForm');
+    const createFormButton = document.getElementById('createFormButton');
+    const cancelCreateButton = document.getElementById('cancelCreateButton');
+    const cancelEditButton = document.getElementById('cancelEditButton');
+    const deleteHotelButton = document.getElementById('deleteHotelButton');
 
-    // Add event listener to toggle the create hotel form
-    toggleFormButton.addEventListener('click', () => {
-        // Toggle the display of the create hotel form
-        if (hotelForm.style.display === 'none' || hotelForm.style.display === '') {
-            hotelForm.style.display = 'block';
-        } else {
-            hotelForm.style.display = 'none';
-        }
+    // Add event listener to the delete hotel button
+    deleteHotelButton.addEventListener('click', () => {
+        const hotelId = document.getElementById('editHotelId').value;
+
+        deleteHotel(hotelId)
+            .then(() => {
+                editHotelForm.style.display = 'none';
+                fetchHotels(); // Refresh the hotel list
+            })
+            .catch(error => console.error('Error:', error));
     });
 
-    hotelForm.style.display = 'none'; // hide create new hotel form
+    // Add event listener to toggle the create hotel form
+    createFormButton.addEventListener('click', () =>
+    {
+        createHotelForm.style.display = 'block';
+    });
+
+    // Hides the form is the cancel button in pressed
+    cancelEditButton.addEventListener('click', () =>
+    {
+        editHotelForm.style.display = 'none';
+    });
+
+    createHotelForm.style.display = 'none'; // hide create new hotel form
 
     fetchHotels()
 
     // Handling the Create New Hotel Form
-    hotelForm.addEventListener('submit', (e) => {
+    createHotelForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const formData = new FormData(hotelForm);
+        const formData = new FormData(createHotelForm);
         const hotelData = {
             name: formData.get('name'),
             country: formData.get('country'),
@@ -37,11 +55,17 @@ window.addEventListener('load', () => {
 
         createHotel(hotelData)
             .then(() => {
-                hotelForm.reset(); // Clear the form after successful submission
+                createHotelForm.reset(); // Clear the form after successful submission
                 fetchHotels(); // Refresh the hotel list
-                hotelForm.style.display = 'none';
+                createHotelForm.style.display = 'none';
             })
             .catch(error => console.error('Error:', error));
+    });
+
+    // Event listener for the cancel button in the create form
+    cancelCreateButton.addEventListener('click', () =>
+    {
+        createHotelForm.style.display = 'none';
     });
 
     // Event listener for submitting the edit hotel form

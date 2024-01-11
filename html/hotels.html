@@ -10,10 +10,10 @@
 <div class="container">
     <h1>QuickBook</h1>
 
-    <button class="button" id="toggleFormButton">Create New Hotel</button>
+    <button class="button" id="createFormButton">Create New Hotel</button>
 
     <!--CREATE NEW HOTEL FORM-->
-    <form id="hotelForm">
+    <form id="createHotelForm">
         <h2>Create a New Hotel</h2>
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br>
@@ -31,6 +31,8 @@
         <input type="text" id="street" name="street" required><br>
 
         <button class="button" type="submit">Add Hotel</button>
+        <button class="button" type="button" id="cancelCreateButton">Cancel</button> <!-- Cancel button -->
+
     </form>
 
     <!-- EDIT HOTEL FORM -->
@@ -53,6 +55,10 @@
         <input type="text" id="editStreet" name="street" required><br>
 
         <button class="button" type="submit">Update Hotel</button>
+        <button class="button" type="button" id="cancelEditButton">Cancel</button> <!-- Cancel button -->
+        <button class="delete-button" type="button" id="deleteHotelButton">Delete Hotel</button>
+
+
     </form>
 
     <!--HOTEL TABLE-->

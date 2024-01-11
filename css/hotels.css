@@ -24,7 +24,7 @@ th, td {
     padding: 12px;
 }
 th {
-    background-color: #007BFF; /* Changed color for header */
+    background-color: #006ee3; /* Changed color for header */
     color: white; /* White text for header */
 }
 
@@ -43,6 +43,7 @@ form {
     margin-top: 20px;
 }
 
+
 label {
     display: block;
     margin-bottom: 5px;
@@ -59,7 +60,7 @@ input[type="text"] {
 }
 
 .button {
-    background-color: #007BFF;
+    background-color: #006ee3;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -67,6 +68,18 @@ input[type="text"] {
     font-size: 16px;
     cursor: pointer;
     margin-top: 10px; /* Added margin for spacing */
+}
+
+.delete-button {
+    background-color: #d60202;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px; /* Added margin for spacing */
+    float: right;
 }
 
 .button:hover {
