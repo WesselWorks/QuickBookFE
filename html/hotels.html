@@ -2,9 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Hotel Listing</title>
+    <link rel="stylesheet" href="../css/hotels.css">
+
 </head>
 <body>
+<div class="container">
+    <h1>QuickBook</h1>
+
+    <button class="button" id="toggleFormButton">Create New Hotel</button>
+
+    <!--CREATE NEW HOTEL FORM-->
+    <form id="hotelForm">
+        <h2>Create a New Hotel</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country" required><br>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required><br>
+
+        <label for="zip">Zip Code:</label>
+        <input type="text" id="zip" name="zip" required><br>
+
+        <label for="street">Street:</label>
+        <input type="text" id="street" name="street" required><br>
+
+        <button class="button" type="submit">Add Hotel</button>
+    </form>
+
+    <!-- EDIT HOTEL FORM -->
+    <form id="editHotelForm" style="display: none;">
+        <h2>Edit Hotel</h2>
+        <input type="hidden" id="editHotelId" name="id"> <!-- Hidden field for hotel ID -->
+        <label for="editName">Name:</label>
+        <input type="text" id="editName" name="name" required><br>
+
+        <label for="editCountry">Country:</label>
+        <input type="text" id="editCountry" name="country" required><br>
+
+        <label for="editCity">City:</label>
+        <input type="text" id="editCity" name="city" required><br>
+
+        <label for="editZip">Zip Code:</label>
+        <input type="text" id="editZip" name="zip" required><br>
+
+        <label for="editStreet">Street:</label>
+        <input type="text" id="editStreet" name="street" required><br>
+
+        <button class="button" type="submit">Update Hotel</button>
+    </form>
+
+    <!--HOTEL TABLE-->
+    <table id="hotelsTable">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Number of Rooms</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--HOTEL DATA-->
+        </tbody>
+    </table>
+
+</div>
+
+    <!--SCRIPTS-->
+    <script type="module" src="../js/hotels.js"></script>
 
 </body>
 </html>
